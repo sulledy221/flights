@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Show all details</title>
+</head>
+<body>
+    <a href="/flights">All flights</a>
+    <a href="/flights/new">Book a Flight!</a>
+    <h1>Add destination</h1>
+    <form action="/flights/<%= flight.id %>" method="POST">
+        <label>Airport:
+          <select name="airport">
+            <option value="AUS">AUS</option>
+            <option value="DFW">DFW</option>
+            <option value="DEN">DEN</option>
+            <option value="LAX">LAX</option>
+            <option value="SAN">SAN</option>
+          </select>
+        </label><br>
+        <label>Arrival:
+          <input type="datetime-local" name="arrival">
+        </label><br>
+        <input type="submit" value="Add destination">
+      </form>
+    <h3>Airport: <%= flight.airport %></h3>
+    <h3>Airline: <%= flight.airline %></h3>
+    <h3>Flight Number: <%= flight.flightNo %></h3>
+    <h3>Departs: <%= flight.departs %></h3>
+    <h3>Destinations: </h3>
+    <% flight.destination.forEach(function(d) { %>
+            <p><%= d.airport %></p>
+            <p><%= d.arrival %></p>
+            <hr>
+    <% }); %>
+</body>
+</html>
