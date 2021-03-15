@@ -30,8 +30,14 @@
     <h3>Airline: <%= flight.airline %></h3>
     <h3>Flight Number: <%= flight.flightNo %></h3>
     <h3>Departs: <%= flight.departs %></h3>
+    <h3>Tickets:  </h3>
+    <% tickets.forEach(function(t) { %>
+      <p><%= t.seat %></p>
+      <p><%= t.price%></p>
+      <p><%= t.flight %></p>
+      <hr>
+<% }); %>
     <h3>Destinations: </h3>
-    <h3>Ticket: </h3>
     <% flight.destination.forEach(function(d) { %>
             <p><%= d.airport %></p>
             <p><%= d.arrival %></p>

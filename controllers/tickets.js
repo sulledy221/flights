@@ -1,29 +1,22 @@
 const Ticket = require('../model/ticket');
 
-const yearFromNow = () => {
-    const d = new Date();
-    const year = d.getFullYear();
-    const month = d.getMonth();
-    const day = d.getDate();
-    return new Date(year + 1, month, day);
-}
 module.exports = {
     new: newTicket,
     create
 };
 
-
-function newFlight(req, res) {
-    res.render('tickets/new');
+function newTicket(req, res) {
+    res.render('tickets/new', {id: req.params.id });
 }
 
 function create(req, res) {
     console.log('the body', req.body)
-    const flight = new Flight(req.body);
-    flight.save(function (err) {
-        if (err) return res.render('flights/new');
-        console.log(flight);
-        res.redirect('/flights');
+    req.body.flight = req.params.id
+    req.body.price = 0
+    const ticket = new Ticket(req.body);
+    ticket.save(function (err) {
+        if (err) return res.render('tickets/new');
+        console.log(ticket);
+        res.redirect(`/flights/${req.params.id}`);
     });
-
 }

@@ -1,4 +1,6 @@
 const Flight = require('../model/flight');
+const Ticket = require('../model/ticket');
+
 
 const yearFromNow = () => {
     const d = new Date();
@@ -45,6 +47,7 @@ function show(req, res) {
     Flight.findById( req.params.id , function (err, flight) {
         console.log('flight', flight)
         Ticket.find({ flight: flight._id }, function (err, tickets) {
+            console.log('ticket ', tickets)
             res.render('flights/show', { flight, tickets });
         });
     });

@@ -11,7 +11,7 @@
   <a href="/flights">All flights</a>
     <a href="/flights/new">Book a Flight!</a>
   <h2>Enter a New Flight</h2>
-  <form action="/flights" method="POST">
+  <form action="/flights/<%= id %>/tickets" method="POST">
     <input type="submit" value="Add Ticket">
     <label>Tickets: 
       <input name="seat" required pattern="[A-F][1-9]\d?">
