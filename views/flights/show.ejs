@@ -9,6 +9,7 @@
 <body>
     <a href="/flights">All flights</a>
     <a href="/flights/new">Book a Flight!</a>
+    <a href="/flights/<%= flight.id %>/tickets/new">New Ticket</a>
     <h1>Add destination</h1>
     <form action="/flights/<%= flight.id %>" method="POST">
         <label>Airport:

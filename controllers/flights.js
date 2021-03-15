@@ -20,10 +20,6 @@ function index(req, res) {
         console.log('what are the flights', flights)
         res.render('flights/index', { flights });
     });
-    Flight.findById(req.params.id, function(err, flight) {
-        Ticket.find({flight: flight._id}, function(err, tickets) {
-        });
-    });
 }
 
 function newFlight(req, res) {
@@ -46,9 +42,11 @@ function create(req, res) {
 
 }
 function show(req, res) {
-    Flight.find({ _id: req.params.id }, function (err, flight) {
+    Flight.findById( req.params.id , function (err, flight) {
         console.log('flight', flight)
-        res.render('flights/show', { flight: flight[0] });
+        Ticket.find({ flight: flight._id }, function (err, tickets) {
+            res.render('flights/show', { flight, tickets });
+        });
     });
 }
 function update(req, res) {
