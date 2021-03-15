@@ -20,6 +20,10 @@ function index(req, res) {
         console.log('what are the flights', flights)
         res.render('flights/index', { flights });
     });
+    Flight.findById(req.params.id, function(err, flight) {
+        Ticket.find({flight: flight._id}, function(err, tickets) {
+        });
+    });
 }
 
 function newFlight(req, res) {
